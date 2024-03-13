@@ -8,17 +8,17 @@ public class App
 {
 
 
-        public static void main(String[] args){
-            int nums[] = {1, 3, 6, 8, 10, 13, 16, 18};
-            int searched_num = 13;
+    public static void main(String[] args){
+        int nums[] = {1, 3, 6, 8, 10, 13, 16, 18};
+        int searched_num = 19;
+        int[] result = Interpolation_search(nums, searched_num);
 
-            int[] result = Interpolation_search(nums, searched_num);
-
-
+        if (result[0] == -1) {
+            System.out.println(searched_num + " is not found after " + result[1] + " iterations.");
+        } else {
             System.out.println(searched_num + " is found at index " + result[0] + " after " + result[1] + " iterations.");
-
         }
-
+    }
     public static int[] Interpolation_search(int[] nums, int searched_num) {
         int low_num = 0;
         int high_num = nums.length - 1;
@@ -35,8 +35,11 @@ public class App
             else
                 return new int[]{mid_num, iterations};
         }
-        return new int[]{mid_num, iterations};
-
+        if (nums[low_num] == searched_num) {
+            return new int[]{low_num, iterations};
+        } else {
+            return new int[]{-1, iterations};
+        }
     }
     }
 
